@@ -61,11 +61,10 @@
 
         .hero {
             display: flex;
-            align-items: flex-start; /* Align content to the left */
+            align-items: flex-start;
             padding: 60px 50px;
-            gap: 20px; /* Reduced from 40px to 20px */
-            max-width: 1000px; /* Added max-width for consistent content width */
-            margin: 0 auto; /* Center the content */
+            gap: 20px;
+            /* Original max-width and margin auto for centering content */
         }
 
         .hero-text {
@@ -80,7 +79,7 @@
         }
 
         .hero-text ul {
-            list-style: none; /* Removed default bullet points */
+            list-style: none; /* Keep list-style none if you don't want default bullets */
             padding-left: 0;
         }
 
@@ -88,19 +87,7 @@
             margin-bottom: 15px;
             font-size: 1rem;
             line-height: 1.6;
-            position: relative; /* For custom bullet point */
-            padding-left: 25px; /* Space for custom bullet */
-        }
-
-        .hero-text li::before {
-            content: "•"; /* Custom bullet point */
-            color: #3b82f6; /* Color of the bullet */
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em; /* Pull the bullet point to the left */
-            position: absolute;
-            left: 0;
+            /* Removed ::before pseudo-element styling to remove dots */
         }
 
         .hero-image {
@@ -168,14 +155,15 @@
                 align-items: flex-start; /* Align hero content to the left on mobile */
                 text-align: left; /* Align text within hero content to the left on mobile */
                 padding: 40px 20px; /* Adjust section padding for mobile */
-                max-width: none; /* Allow full width on mobile if needed */
-                margin: 0; /* Remove auto margins on mobile */
+                max-width: 600px; /* Reinstated original max-width if it was intended for centering */
+                margin: auto; /* Reinstated original margin: auto for centering */
             }
 
             .hero-image {
                 margin-top: 20px;
                 text-align: center; /* Keep image centered if desired */
                 width: 100%; /* Ensure image container takes full width on mobile */
+                max-width: 400px; /* Reinstated max-width to align with original intention for centering */
             }
 
             .hero-text h1 {
@@ -184,18 +172,12 @@
             }
 
             .hero-text ul {
-                padding-left: 20px; /* Add some left padding for the list on mobile */
+                padding-left: 0; /* No padding needed if no custom bullets */
             }
 
             .hero-text li {
-                padding-left: 0; /* Reset padding for custom bullet on mobile if list-style is used */
+                padding-left: 0; /* No padding needed if no custom bullets */
                 text-align: left; /* Ensure list items are left-aligned */
-                /* If using custom bullets, you might need to re-evaluate the ::before styling here */
-            }
-            .hero-text li::before {
-                position: static; /* Adjust position for mobile if needed */
-                margin-left: 0; /* Remove negative margin on mobile */
-                margin-right: 5px; /* Add a small space after the bullet */
             }
         }
     </style>

@@ -61,11 +61,7 @@
 
     section {
         padding: 60px 50px;
-        max-width: 1000px; /* Added max-width for consistent content width */
-        margin: 0 auto; /* Center the content */
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start; /* Align content to the left */
+        margin: auto; /* Kept original margin: auto for centering */
     }
 
     section h2 {
@@ -76,7 +72,6 @@
 
     .project-item {
         margin-bottom: 40px;
-        width: 100%; /* Ensure items take full width of the left-aligned container */
     }
 
     .project-item h3 {
@@ -93,7 +88,7 @@
     }
 
     .project-details {
-        /* display: none;  */
+        /* Initially hidden */
         padding-left: 20px;
         font-size: 0.95rem;
         line-height: 1.6;
@@ -131,13 +126,13 @@
 
         .nav-links {
             display: none;
-            flex-direction: column;
+            flex-direction: column; /* Stack links vertically */
             width: 100%;
             background-color: #f4f6fa; /* Match body background or a navbar background */
-            position: absolute;
-            top: 60px;
+            position: absolute; /* Position it below the header */
+            top: 60px; /* Adjust based on your header height */
             left: 0;
-            align-items: flex-start;
+            align-items: flex-start; /* Align links to the left */
             padding: 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             z-index: 10;
@@ -148,46 +143,32 @@
         }
 
         .nav-links a {
-            margin: 10px 0;
+            margin: 10px 0; /* Add vertical spacing between links */
             padding: 10px 0;
-            border-bottom: 1px solid #eee;
-            width: 100%;
-            text-align: left;
+            border-bottom: 1px solid #eee; /* Optional: Separator for links */
+            width: 100%; /* Make links take full width */
+            text-align: left; /* Align text to the left */
         }
 
         .nav-links a:last-child {
-            border-bottom: none;
+            border-bottom: none; /* Remove border from the last link */
         }
 
         .hamburger {
-            display: block;
+            display: block; /* Show hamburger icon on mobile */
         }
 
         section {
             padding: 40px 20px; /* Adjust section padding for mobile */
-            max-width: none; /* Allow full width on mobile if needed */
-            margin: 0; /* Remove any margins on mobile */
-            display: block; /* Revert to block display on mobile */
-            align-items: flex-start; /* Ensure left alignment on mobile too */
+            margin: 0 auto; /* Keep auto margins on mobile as well for centering */
         }
 
         section h2 {
             font-size: 2rem; /* Adjust heading size for mobile */
-            text-align: left; /* Ensure left alignment on mobile */
-        }
-
-        .project-item {
-            margin-bottom: 30px; /* Adjust spacing on mobile */
-            text-align: left; /* Ensure left alignment on mobile */
-            width: 100%; /* Ensure full width on mobile */
-        }
-
-        .project-item h3 {
-            font-size: 1.1rem; /* Adjust project title size on mobile */
         }
 
         .project-details {
-            padding-left: 0; /* Reset left padding for mobile details */
+            padding-left: 0; /* Reset left padding for mobile */
         }
     }
     </style>
@@ -197,7 +178,6 @@
             const hamburger = document.querySelector('.hamburger');
             const navLinks = document.querySelector('.nav-links');
 
-            // Toggle project details on click
             projectTitles.forEach(title => {
                 title.addEventListener('click', function() {
                     const detailsDiv = this.nextElementSibling;
@@ -207,7 +187,6 @@
                 });
             });
 
-            // Hamburger menu functionality
             if (hamburger && navLinks) {
                 hamburger.addEventListener('click', function(event) {
                     event.stopPropagation(); // Prevent this click from bubbling up to the document
