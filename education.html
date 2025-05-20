@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Education</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* background-color: #f4f6fa; */
+            /* color: #333; */
+            background-image: url("https://img.freepik.com/free-vector/simple-blue-gradient-background-vector-business_53876-166894.jpg?ga=GA1.1.16314612.1747726406&semt=ais_hybrid&w=740");
+            background-size: cover; /* Cover the entire viewport */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            background-attachment: fixed; /* Make the background image fixed */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 50px;
+            background-color: transparent;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #3b82f6;
+        }
+
+        .nav-links {
+            display: flex; /* Display links in a row by default */
+            align-items: center;
+        }
+
+        .nav-links a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #b9b9b9;
+        }
+
+        .hamburger {
+            display: none; /* Hide hamburger icon on larger screens */
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #3b82f6;
+        }
+
+        .hero {
+            padding: 60px 50px;
+            /* To make sure content aligns to the left, remove `margin: auto;` and use flexbox alignment */
+            max-width: 1000px; /* Set a max-width for content to prevent it from stretching too wide */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align content to the left */
+        }
+
+        .hero-text {
+            max-width: 800px; /* Adjust as needed for your content width within the section */
+            width: 100%; /* Ensure it takes full available width within its flex parent */
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            color: #3b82f6;
+            margin-bottom: 20px;
+        }
+
+        .edu-item {
+            margin-bottom: 30px;
+            width: 100%; /* Ensure items take full width of the left-aligned container */
+        }
+
+        .edu-item h3 {
+            font-size: 1.5rem;
+            color: #222;
+            margin-bottom: 5px;
+        }
+
+        .edu-item p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px; /* Adjust padding for smaller screens */
+                /* Added for mobile transparency based on previous discussion */
+                background-color: transparent !important;
+                flex-direction: row; /* Ensure logo and hamburger are on the same line */
+                justify-content: space-between; /* Keep logo left, hamburger right */
+            }
+
+            .nav-links {
+                display: none; /* Hide the links by default on mobile */
+                flex-direction: column; /* Stack links vertically */
+                width: 100%;
+                background-color: #f4f6fa; /* Match body background or a navbar background */
+                position: absolute; /* Position it below the header */
+                top: 60px; /* Adjust based on your header height */
+                left: 0;
+                align-items: flex-start; /* Align links to the left */
+                padding: 20px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                z-index: 10; /* Ensure it's above other content */
+            }
+
+            .nav-links.active {
+                display: flex; /* Show links when the 'active' class is added */
+            }
+
+            .nav-links a {
+                margin: 10px 0; /* Add vertical spacing between links */
+                padding: 10px 0;
+                border-bottom: 1px solid #eee; /* Optional: Separator for links */
+                width: 100%; /* Make links take full width */
+                text-align: left; /* Align text to the left */
+            }
+
+            .nav-links a:last-child {
+                border-bottom: none; /* Remove border from the last link */
+            }
+
+            .hamburger {
+                display: block; /* Show hamburger icon on mobile */
+            }
+
+            .hero {
+                padding: 40px 20px; /* Adjust section padding for mobile */
+                max-width: none; /* Allow full width on mobile if needed */
+                margin: 0; /* Remove any margins on mobile */
+                display: block; /* Revert to block display on mobile */
+                align-items: flex-start; /* Ensure left alignment on mobile too */
+            }
+
+            .hero-text h1 {
+                font-size: 2rem; /* Adjust heading size for mobile */
+                text-align: left; /* Ensure left alignment on mobile */
+            }
+
+            .edu-item {
+                font-size: 1.1rem; /* Adjust education item heading size for mobile */
+                text-align: left; /* Ensure left alignment on mobile */
+                width: 100%; /* Ensure full width on mobile */
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const navbar = document.querySelector('.navbar'); // Get the navbar itself for clarity
+
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', function(event) {
+                    event.stopPropagation(); // Prevent this click from bubbling up to the document
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            // Close nav when clicking outside of it
+            document.addEventListener('click', function(event) {
+                // Check if the clicked element is NOT inside the navLinks and NOT the hamburger itself
+                if (!navLinks.contains(event.target) && !hamburger.contains(event.target)) {
+                    navLinks.classList.remove('active');
+                }
+            });
+
+            // Optional: Close nav if a link inside it is clicked
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">💠 My Profile</div>
+        <nav class="nav-links">
+            <a href="index.html">About</a>
+            <a href="experience.html">Experience</a>
+            <a href="education.html">Education</a>
+            <a href="projects.html">Projects</a>
+            <a href="achievements.html">Achievements</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="hamburger">☰</div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Education</h1>
+
+            <div class="edu-item">
+                <h3>B.Sc. in Computer Science</h3>
+                <p><strong>National Degree College, Nandyal <br> Rayalaseema University, Kurnool</strong> – 2019 to 2022</p>
+                <p>Graduated with First Class. Focused on web development, algorithms, and databases.</p>
+            </div>
+
+            <div class="edu-item">
+                <h3>MPC</h3>
+                <p><strong>National Junior College, Nandyal <br> Board of Intermediate Education, Andhra Pradesh </strong> – 2017 to 2019</p>
+                <p>Studied Mathematics, Physics, and Computer Science.</p>
+            </div>
+
+            <div class="edu-item">
+                <h3>High School</h3>
+                <p><strong>Municipal High School, Tekke, Nandyal <br> Board of Secondary Education, Andhra Pradesh. </strong> – 2016 to 2017</p>
+                <p> </p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

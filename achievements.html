@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Achievements</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url("https://img.freepik.com/free-vector/simple-blue-gradient-background-vector-business_53876-166894.jpg?ga=GA1.1.16314612.1747726406&semt=ais_hybrid&w=740");
+            background-size: cover; /* Cover the entire viewport */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            background-attachment: fixed; /* Make the background image fixed */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 50px;
+            background-color: transparent;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #3b82f6;
+        }
+
+        .nav-links {
+            display: flex; /* Display links in a row by default */
+            align-items: center;
+        }
+
+        .nav-links a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #b9b9b9;
+        }
+
+        .hamburger {
+            display: none; /* Hide hamburger icon on larger screens */
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #3b82f6;
+        }
+
+        .hero {
+            display: flex;
+            align-items: flex-start; /* Align content to the left */
+            padding: 60px 50px;
+            gap: 20px; /* Reduced from 40px to 20px */
+            max-width: 1000px; /* Added max-width for consistent content width */
+            margin: 0 auto; /* Center the content */
+        }
+
+        .hero-text {
+            flex: 1.2;
+            min-width: 260px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.3rem;
+            color: #3b82f6;
+            margin-bottom: 20px;
+        }
+
+        .hero-text ul {
+            list-style: none; /* Removed default bullet points */
+            padding-left: 0;
+        }
+
+        .hero-text li {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.6;
+            position: relative; /* For custom bullet point */
+            padding-left: 25px; /* Space for custom bullet */
+        }
+
+        .hero-text li::before {
+            content: "•"; /* Custom bullet point */
+            color: #3b82f6; /* Color of the bullet */
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em; /* Pull the bullet point to the left */
+            position: absolute;
+            left: 0;
+        }
+
+        .hero-image {
+            flex: 1;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px; /* Adjust padding for smaller screens */
+                flex-direction: row;
+                justify-content: space-between;
+                background-color: transparent !important; /* Ensure transparency on mobile */
+            }
+
+            .logo {
+                text-align: left; /* Explicitly align logo to the left on mobile */
+            }
+
+            .nav-links {
+                display: none; /* Hide the links by default on mobile */
+                flex-direction: column; /* Stack links vertically */
+                width: 100%;
+                background-color: #f4f6fa; /* Match body background or a navbar background */
+                position: absolute; /* Position it below the header */
+                top: 60px; /* Adjust based on your header height */
+                left: 0;
+                align-items: flex-start; /* Align links to the left */
+                padding: 20px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                z-index: 10; /* Ensure it's above other content */
+            }
+
+            .nav-links.active {
+                display: flex; /* Show links when the 'active' class is added */
+            }
+
+            .nav-links a {
+                margin: 10px 0; /* Add vertical spacing between links */
+                padding: 10px 0;
+                border-bottom: 1px solid #eee; /* Optional: Separator for links */
+                width: 100%; /* Make links take full width */
+                text-align: left; /* Align text to the left */
+            }
+
+            .nav-links a:last-child {
+                border-bottom: none; /* Remove border from the last link */
+            }
+
+            .hamburger {
+                display: block; /* Show hamburger icon on mobile */
+            }
+
+            .hero {
+                flex-direction: column;
+                align-items: flex-start; /* Align hero content to the left on mobile */
+                text-align: left; /* Align text within hero content to the left on mobile */
+                padding: 40px 20px; /* Adjust section padding for mobile */
+                max-width: none; /* Allow full width on mobile if needed */
+                margin: 0; /* Remove auto margins on mobile */
+            }
+
+            .hero-image {
+                margin-top: 20px;
+                text-align: center; /* Keep image centered if desired */
+                width: 100%; /* Ensure image container takes full width on mobile */
+            }
+
+            .hero-text h1 {
+                font-size: 2rem; /* Adjust heading size for mobile */
+                text-align: left; /* Ensure heading is left-aligned */
+            }
+
+            .hero-text ul {
+                padding-left: 20px; /* Add some left padding for the list on mobile */
+            }
+
+            .hero-text li {
+                padding-left: 0; /* Reset padding for custom bullet on mobile if list-style is used */
+                text-align: left; /* Ensure list items are left-aligned */
+                /* If using custom bullets, you might need to re-evaluate the ::before styling here */
+            }
+            .hero-text li::before {
+                position: static; /* Adjust position for mobile if needed */
+                margin-left: 0; /* Remove negative margin on mobile */
+                margin-right: 5px; /* Add a small space after the bullet */
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            // Hamburger menu functionality
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', function(event) {
+                    event.stopPropagation(); // Prevent this click from bubbling up to the document
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            // Close nav when clicking outside of it
+            document.addEventListener('click', function(event) {
+                // Check if the clicked element is NOT inside the navLinks and NOT the hamburger itself
+                if (!navLinks.contains(event.target) && !hamburger.contains(event.target)) {
+                    navLinks.classList.remove('active');
+                }
+            });
+
+            // Optional: Close nav if a link inside it is clicked
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">💠 My Profile</div>
+        <nav class="nav-links">
+            <a href="index.html">About</a>
+            <a href="experience.html">Experience</a>
+            <a href="education.html">Education</a>
+            <a href="projects.html">Projects</a>
+            <a href="achievements.html">Achievements</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="hamburger">☰</div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Achievements</h1>
+            <ul>
+                <li>🏆 Winner – Recognized as a winner in multiple academic competitions at both the school and college levels. </li>
+                <li>📜 Completed Java Full Stack training with commendable performance. </li>
+                <li>🧩 Getting a certificate in java basics in that site Hackerrank</li>
+                <li>📖 Solved some coding problems (Java,Sql) in the site Hackerrank</li>
+            </ul>
+        </div>
+        <div class="hero-image">
+            <img src="https://thumbs.dreamstime.com/b/winner-win-holding-golden-champion-trophy-cup-prize-silhouette-best-award-victory-professional-challenge-team-gold-sport-over-181730454.jpg" alt="Achievements Image">
+        </div>
+    </section>
+
+</body>
+</html>
